@@ -2,12 +2,14 @@
 import React from 'react'
 
 import styled from 'styled-components';
+import Input from '../../UI/Input';
 
 
 const Form = styled.form`
     text-align: right;
 
     button {
+   
   font: inherit;
   cursor: pointer;
   background-color: #8a2b06;
@@ -18,12 +20,20 @@ const Form = styled.form`
   font-weight: bold;
 }
 `;
-const MealItemForm = prop => {
+const MealItemForm = props => {
   return (
     <Form>
-      <input />
+    <Input lable='Amount'
+       input={{
+        id: 'amount',
+        type: 'number',
+        min: '1',
+        max: '5',
+        step: '1',
+        defaultValue: '1',
+      }} 
+    /> 
       <button> + Add</button>
-
     
     </Form>
   )
