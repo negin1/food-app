@@ -42,9 +42,9 @@ const Button  = styled.button`
 `;
 
 
-const HeaderCartBtn = () => {
+const HeaderCartBtn = (props) => {
   return (
-       <Button>
+       <Button onClick={props.onClick}>
           <span><ShoppingCartOutlinedIcon/></span>
           <span>Your Chart</span>
           <span>3</span>

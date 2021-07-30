@@ -41,7 +41,7 @@ const Header = props => {
     <>
     <StyledHeader>
       <h1>Persian Food</h1>
-      <HeaderCartBtn />
+      <HeaderCartBtn onClick={props.onShowCart} />
     </StyledHeader>
  
     <MainImg>
