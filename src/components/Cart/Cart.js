@@ -58,14 +58,14 @@ const Cart = props => {
 
   return (
     <>
-   <Modal>
+   <Modal onClose={props.onClose}>
       {cartItems}
       <Total>
         <span>Total Amount</span>
         <span>£32,62</span>
       </Total>
       <Actions>
-        <button>Close</button>
+        <button onClick={props.onClose}>Close</button>
         <button>Order</button>
       </Actions>
    </Modal>

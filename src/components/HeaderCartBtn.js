@@ -46,7 +46,7 @@ const HeaderCartBtn = (props) => {
   return (
        <Button onClick={props.onClick}>
           <span><ShoppingCartOutlinedIcon/></span>
-          <span>Your Chart</span>
+          <span>Your Cart</span>
           <span>3</span>
     </Button>
   )

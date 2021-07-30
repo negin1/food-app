@@ -16,12 +16,11 @@ function App() {
     setCartIsShown(false)
   }
 
-  
 
 
   return (
     <>
-    {cartIsShown&&<Cart />}
+    {cartIsShown && <Cart onClose={hideCartHandler}/>}
     <Header onShowCart={showCartHandler}/>
     <main>
       
