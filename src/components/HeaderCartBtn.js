@@ -1,5 +1,7 @@
-import React from 'react'
+import React, {useContext} from 'react'
+
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import  CartContext from '../store/cart-context';
 import styled from 'styled-components';
 
 const Button  = styled.button`
@@ -43,11 +45,17 @@ const Button  = styled.button`
 
 
 const HeaderCartBtn = (props) => {
+  const cartCtx = useContext(CartContext)
+
+  const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
+    return curNumber + item.amount;
+  },0);
+
   return (
        <Button onClick={props.onClick}>
           <span><ShoppingCartOutlinedIcon/></span>
           <span>Your Cart</span>
-          <span>3</span>
+          <span>{numberOfCartItems}</span>
     </Button>
   )
 }
