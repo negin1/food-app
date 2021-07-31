@@ -1,8 +1,9 @@
 
-import React from 'react'
-
+import React, {useContext} from 'react'
+import CartContext from '../../store/cart-context';
 import styled from 'styled-components';
 import Modal from '../UI/Modal';
+
 
 const Ul  = styled.ul`
     list-style: none;
@@ -52,9 +53,18 @@ const Actions  = styled.div`
 
 const Cart = props => {
 
-  const cartItems = <Ul>{[
-    { id:'c1', name: 'Joojeh Kabab', amount: 2, price: 16.99},
-    ].map((item) => <li>{item.name}</li>)}</Ul>;
+  const cartCtx  = useContext(CartContext);
+
+  const totalAmount = `${cartCtx.totalAmount.toFixed(2)}`
+  const hasItems = cartCtx.items.lenght > 0;
+  
+  const cartItems = (
+    <Ul>
+     {cartCtx.items.map((item) =>  (
+    <li>{item.name}</li>)
+    )}
+    </Ul>
+  );
 
   return (
     <>
@@ -62,11 +72,11 @@ const Cart = props => {
       {cartItems}
       <Total>
         <span>Total Amount</span>
-        <span>£32,62</span>
+        <span>£{totalAmount}</span>
       </Total>
       <Actions>
         <button onClick={props.onClose}>Close</button>
-        <button>Order</button>
+           {hasItems && <button>Order</button>}
       </Actions>
    </Modal>
     </>
