@@ -5,7 +5,7 @@ import Modal from '../UI/Modal';
 import CartItem from './CartItem';
 
 import styled from 'styled-components';
-import { isTSEnumMember } from '@babel/types';
+
 
 const Ul  = styled.ul`
     list-style: none;
@@ -13,7 +13,7 @@ const Ul  = styled.ul`
   padding: 0;
   max-height: 20rem;
   overflow: auto;
-`
+`;
 
 const Total  = styled.div`
     display: flex;
@@ -22,11 +22,7 @@ const Total  = styled.div`
   font-weight: bold;
   font-size: 1.5rem;
   margin: 1rem 0;
-
-  
-
-  
-`
+`;
 
 const Actions  = styled.div`
     text-align: right;
@@ -41,16 +37,6 @@ const Actions  = styled.div`
           margin-left: 1rem;
      }
   
-
-    &:nth-of-type(1){
-      
-         
-  };
-  
-  &:nth-of-type(2){
-  
-  }
-
 `;
 
 const Cart = props => {
@@ -93,7 +79,8 @@ const Cart = props => {
       </Total>
       <Actions>
         <button onClick={props.onClose}>Close</button>
-        <button>Order</button>
+        
+       {hasItems && <button >Order</button>}
       </Actions>
    </Modal>
     </>

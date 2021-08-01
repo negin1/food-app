@@ -2,7 +2,15 @@ import React, {useContext} from 'react'
 
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import  CartContext from '../store/cart-context';
-import styled from 'styled-components';
+import styled, {keyframes,} from 'styled-components';
+
+const bump = keyframes`
+  0% {transform: scale(1);}
+  10% { transform: scale(0.9);}
+  30% {transform: scale(1.1);}
+  50% {transform: scale(1.15);}
+  100% {transform: scale(1);}
+`
 
 const Button  = styled.button`
    cursor: pointer;
@@ -16,6 +24,7 @@ const Button  = styled.button`
   align-items: center;
   border-radius: 25px;
   font-weight: bold;
+  animation: ${bump} 1s linear;
 
   &:hover {
     background-color: #2c0d00;
@@ -35,14 +44,13 @@ const Button  = styled.button`
   
   &:nth-of-type(3){
      background-color: #b94517;
-  padding: 0.25rem 1rem;
-  border-radius: 25px;
-  margin-left: 1rem;
-  font-weight: bold;
+    padding: 0.25rem 1rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+    font-weight: bold;
   }
 }
 `;
-
 
 const HeaderCartBtn = (props) => {
   const cartCtx = useContext(CartContext)
@@ -52,7 +60,7 @@ const HeaderCartBtn = (props) => {
   },0);
 
   return (
-       <Button onClick={props.onClick}>
+       <Button onClick={props.onClick} animate={bump}>
           <span><ShoppingCartOutlinedIcon/></span>
           <span>Your Cart</span>
           <span>{numberOfCartItems}</span>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import mealsImage from '../../assets/meal.jpg'
+import MealsImage from '../../assets/meal.jpg'
 import HeaderCartBtn from '../HeaderCartBtn';
 
 import styled from 'styled-components';
@@ -46,7 +46,7 @@ const Header = props => {
     </StyledHeader>
  
     <MainImg>
-     <img src={mealsImage}alt="A table with food" />
+     <img src={MealsImage}alt="A table with food" />
      </MainImg>
     </>
   )
