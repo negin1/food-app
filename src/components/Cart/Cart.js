@@ -1,9 +1,11 @@
 
 import React, {useContext} from 'react'
 import CartContext from '../../store/cart-context';
-import styled from 'styled-components';
 import Modal from '../UI/Modal';
+import CartItem from './CartItem';
 
+import styled from 'styled-components';
+import { isTSEnumMember } from '@babel/types';
 
 const Ul  = styled.ul`
     list-style: none;
@@ -58,11 +60,26 @@ const Cart = props => {
   const totalAmount = `${cartCtx.totalAmount.toFixed(2)}`
   const hasItems = cartCtx.items.lenght > 0;
   
+  const cartItemRemoveHandler = id => {
+    cartCtx.removeItem(id);
+  };
+
+  const cartItemAddHandler = item => {
+    cartCtx.addItem({...item, amount: 1})
+  };
+
   const cartItems = (
     <Ul>
      {cartCtx.items.map((item) =>  (
-    <li>{item.name}</li>)
-    )}
+      <CartItem 
+        key={item.id}
+        name={item.name}
+        amount={item.amount}
+        price={item.price}
+        onRemove={cartItemRemoveHandler.bind(null, item.id)}
+        onAdd={cartItemAddHandler.bind(null, item)}
+      />
+     ))}
     </Ul>
   );
 
@@ -76,7 +93,7 @@ const Cart = props => {
       </Total>
       <Actions>
         <button onClick={props.onClose}>Close</button>
-           {hasItems && <button>Order</button>}
+        <button>Order</button>
       </Actions>
    </Modal>
     </>

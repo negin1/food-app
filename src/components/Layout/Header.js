@@ -1,9 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+
 
 import mealsImage from '../../assets/meal.jpg'
 import HeaderCartBtn from '../HeaderCartBtn';
 
+import styled from 'styled-components';
 const StyledHeader = styled.header`
   position: fixed;
   top: 0;
